@@ -1,48 +1,59 @@
-import { ExternalLink, FolderGit2 } from 'lucide-react';
+import React from 'react';
 
-export default function ProjectCard({ title, year, tags, description, link }) {
+export default function ProjectCard({ title, category, description, tags }) {
+  const projectTags = tags || [];
+
   return (
-    <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6 flex flex-col justify-between hover:border-blue-500/50 transition-all duration-300 group hover:-translate-y-1">
+    <div 
+      dir="rtl" 
+      style={{
+        backgroundColor: 'var(--bg-card)',
+        border: '1px solid var(--border-color)',
+        borderRadius: '8px',
+        padding: '1.5rem',
+        width: '100%',
+        maxWidth: '340px',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        transition: 'border-color 0.2s',
+        boxSizing: 'border-box'
+      }}
+      onMouseEnter={(e) => e.currentTarget.style.borderColor = '#44444a'}
+      onMouseLeave={(e) => e.currentTarget.style.borderColor = 'var(--border-color)'}
+    >
       <div>
-        {/* هدر کارت */}
-        <div className="flex justify-between items-start mb-4">
-          <div className="bg-blue-600/10 p-2.5 rounded-xl text-blue-500 group-hover:bg-blue-600 group-hover:text-white transition-colors">
-            <FolderGit2 className="h-5 w-5" />
-          </div>
-          <span className="text-xs font-sans text-gray-500 bg-gray-950 px-2.5 py-1 rounded-full border border-gray-800">
-            {year}
+        <div style={{ marginBottom: '1rem' }}>
+          <span style={{ 
+            backgroundColor: 'rgba(255, 255, 255, 0.03)', 
+            color: 'var(--text-main)', 
+            border: '1px solid var(--border-color)',
+            padding: '0.2rem 0.6rem', 
+            borderRadius: '4px', 
+            fontSize: '0.75rem'
+          }}>
+            {category || 'پروژه'}
           </span>
         </div>
 
-        {/* عنوان و توضیحات */}
-        <h4 className="text-xl font-bold text-white mb-2 font-mono group-hover:text-blue-400 transition-colors">
+        <h3 style={{ color: 'var(--text-main)', margin: '0 0 0.75rem 0', fontSize: '1.05rem', fontWeight: '700' }}>
           {title}
-        </h4>
-        <p className="text-gray-400 text-sm leading-relaxed mb-4 text-justify">
+        </h3>
+
+        <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', lineHeight: '1.6', margin: '0 0 1.5rem 0' }}>
           {description}
         </p>
       </div>
 
-      {/* تگ‌ها و لینک خروجی */}
-      <div className="border-t border-gray-800/60 pt-4 mt-2 flex justify-between items-center">
-        <div className="flex flex-wrap gap-1.5">
-          {tags.map((tag, index) => (
-            <span key={index} className="text-[11px] font-medium text-gray-400 bg-gray-950 px-2 py-0.5 rounded border border-gray-800/80">
+      {projectTags.length > 0 && (
+        <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginTop: 'auto' }}>
+          {projectTags.map((tag, index) => (
+            <span key={index} style={{ backgroundColor: 'rgba(255,255,255,0.02)', border: '1px solid var(--border-color)', color: 'var(--text-muted)', padding: '0.15rem 0.5rem', borderRadius: '4px', fontSize: '0.7rem' }}>
               {tag}
             </span>
           ))}
         </div>
-        
-        <a 
-          href={link} 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          className="text-gray-400 hover:text-white flex items-center gap-1 text-xs transition-colors"
-        >
-          <span>مشاهده</span>
-          <ExternalLink className="h-3.5 w-3.5" />
-        </a>
-      </div>
+      )}
     </div>
   );
 }

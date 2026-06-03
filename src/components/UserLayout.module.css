@@ -1,0 +1,69 @@
+.container {
+  min-height: 100vh;
+  background-color: #282a36;
+  color: #f8f8f2;
+  display: flex;
+  flex-direction: column;
+}
+
+.mainContent {
+  flex-grow: 1;
+  padding: 2rem;
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.welcomeCard {
+  background-color: #1e1f29;
+  border: 1px solid #44475a;
+  border-radius: 1rem;
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.title {
+  font-size: 1.875rem;
+  font-weight: 800;
+  color: #50fa7b; /* تم سبز برای کاربر عادی */
+  margin-bottom: 0.75rem;
+}
+
+.text {
+  color: #6272a4;
+  line-height: 1.7;
+}
+
+.sectionTitle {
+  font-size: 1.25rem;
+  color: #ff79c6;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.featureCard {
+  background-color: #1e1f29;
+  border: 1px solid #44475a;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.featureCard:hover {
+  transform: translateY(-3px);
+  border-color: #50fa7b;
+}
+
+.featureTitle {
+  font-size: 1.1rem;
+  color: #8be9fd;
+  margin-bottom: 0.5rem;
+}

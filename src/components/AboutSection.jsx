@@ -1,58 +1,41 @@
-import { resumeData } from '../data/resumeData';
-import SkillCard from './SkillCard';
-import { Mail, MapPin, Phone, User } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { getResumeData } from '../data/resumeData';
 
 export default function AboutSection() {
-  const { personalInfo, skills } = resumeData;
+  const [data, setData] = useState(getResumeData());
+
+  // شنود تغییرات برای آپدیت شدن آنی این بخش
+  useEffect(() => {
+    const handleDataChange = () => setData(getResumeData());
+    window.addEventListener('resumeDataChange', handleDataChange);
+    return () => window.removeEventListener('resumeDataChange', handleDataChange);
+  }, []);
+
+  // گرفتن داده‌های مربوط به بخش درباره من به صورت کاملاً ایمن
+  const info = data?.personalInfo || {};
 
   return (
-    <section className="py-12 bg-gray-900/50 rounded-2xl border border-gray-800 p-6 md:p-10 my-8" dir="rtl">
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+    <section dir="rtl" style={{ padding: '2rem 0', borderBottom: '1px solid #44475a' }}>
+      <h2 style={{ color: '#ff79c6', marginBottom: '1rem' }}>درباره من</h2>
+      <div style={{ background: '#1e1f29', border: '1px solid #44475a', padding: '2rem', borderRadius: '12px' }}>
+        <h3 style={{ color: '#50fa7b', marginTop: 0 }}>{info.name || "رضا قاضی‌خانی"}</h3>
+        <h4 style={{ color: '#8be9fd', fontWeight: 'normal' }}>{info.title || "توسعه‌دهنده وب / متخصص شبکه"}</h4>
+        <p style={{ color: '#f8f8f2', lineHeight: '1.8', marginTop: '1rem' }}>
+          {info.bio || "اطلاعات بیوگرافی ثبت نشده است."}
+        </p>
         
-        {/* ستون اول: اطلاعات فردی */}
-        <div className="lg:col-span-1 space-y-6 bg-gray-950/40 p-6 rounded-xl border border-gray-800/60">
-          <div className="flex items-center gap-3 border-b border-gray-800 pb-4">
-            <div className="bg-blue-600/10 p-3 rounded-lg text-blue-500">
-              <User className="h-6 w-6" />
-            </div>
-            <div>
-              <h2 className="text-xl font-bold text-white">{personalInfo.name}</h2>
-              <p className="text-sm text-gray-400">{personalInfo.title}</p>
-            </div>
-          </div>
-
-          <p className="text-gray-400 text-sm leading-relaxed text-justify">
-            {personalInfo.bio}
-          </p>
-
-          <div className="space-y-3 pt-2 text-sm text-gray-300">
-            <div className="flex items-center gap-2.5">
-              <MapPin className="h-4 w-4 text-gray-500" />
-              <span>{personalInfo.location}</span>
-            </div>
-            <div className="flex items-center gap-2.5">
-              <Mail className="h-4 w-4 text-gray-500" />
-              <span className="font-mono">{personalInfo.email}</span>
-            </div>
-            <div className="flex items-center gap-2.5">
-              <Phone className="h-4 w-4 text-gray-500" />
-              <span className="font-mono">{personalInfo.phone}</span>
+        {info.skills && info.skills.length > 0 && (
+          <div style={{ marginTop: '1.5rem' }}>
+            <h5 style={{ color: '#ffb86c', marginBottom: '0.5rem', fontSize: '1rem' }}>مهارت‌های تخصصی:</h5>
+            <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+              {info.skills.map((skill, index) => (
+                <span key={index} style={{ backgroundColor: '#44475a', color: '#f8f8f2', padding: '0.25rem 0.75rem', borderRadius: '4px', fontSize: '0.85rem' }}>
+                  {skill}
+                </span>
+              ))}
             </div>
           </div>
-        </div>
-
-        {/* ستون دوم: مهارت‌های فنی */}
-        <div className="lg:col-span-2 space-y-4">
-          <h3 className="text-lg font-bold text-white mb-6 border-r-4 border-blue-500 pr-3">
-            مهارت‌های تخصصی و تجربی
-          </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {skills.map((skill, index) => (
-              <SkillCard key={index} {...skill} />
-            ))}
-          </div>
-        </div>
-
+        )}
       </div>
     </section>
   );

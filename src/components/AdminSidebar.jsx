@@ -1,13 +1,28 @@
-import { NavLink } from 'react-router-dom';
-import { LayoutDashboard, FileText, Briefcase, Home, LogOut } from 'lucide-react';
-import styles from './AdminSidebar.module.css'; // ایمپورت استایل ماژولار
+import { NavLink, useNavigate } from "react-router-dom";
+import {
+  LayoutDashboard,
+  FileText,
+  Briefcase,
+  FolderGit,
+  Home,
+  LogOut,
+} from "lucide-react";
+import styles from "./AdminSidebar.module.css";
 
 export default function AdminSidebar() {
+  const navigate = useNavigate();
   const menuItems = [
-    { name: 'داشبورد اصلی', path: '/admin', icon: LayoutDashboard, end: true },
-    { name: 'مدیریت مقالات', path: '/admin/articles', icon: FileText },
-    { name: 'مدیریت سوابق', path: '/admin/experience', icon: Briefcase },
+    { name: "داشبورد اصلی", path: "/admin", icon: LayoutDashboard, end: true },
+    { name: "مدیریت مقالات", path: "/admin/articles", icon: FileText },
+    { name: "مدیریت سوابق", path: "/admin/experience", icon: Briefcase },
+    { name: "مدیریت نمونه‌کارها", path: "/admin/projects", icon: FolderGit }, // آیتم جدید منو
   ];
+
+  const handleLogout = () => {
+    localStorage.clear();
+    navigate("/login");
+    window.dispatchEvent(new Event("authChange"));
+  };
 
   return (
     <aside className={styles.sidebar} dir="rtl">
@@ -26,7 +41,7 @@ export default function AdminSidebar() {
                 to={item.path}
                 end={item.end}
                 className={({ isActive }) =>
-                  `${styles.navLink} ${isActive ? styles.activeLink : ''}`
+                  `${styles.navLink} ${isActive ? styles.activeLink : ""}`
                 }
               >
                 <Icon size={16} />
@@ -42,7 +57,7 @@ export default function AdminSidebar() {
           <Home size={16} />
           <span>مشاهده سایت عمومی</span>
         </NavLink>
-        <button onClick={() => alert('خروج')} className={styles.logoutButton}>
+        <button onClick={handleLogout} className={styles.logoutButton}>
           <LogOut size={16} />
           <span>خروج از حساب</span>
         </button>
