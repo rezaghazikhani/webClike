@@ -1,0 +1,103 @@
+.container {
+  min-height: 100vh;
+  background-color: #282a36;
+  color: #f8f8f2;
+  display: flex;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.mainContent {
+  flex-grow: 1;
+  padding: 2rem;
+  overflow-y: auto;
+  max-height: 100vh;
+}
+
+.wrapper {
+  max-w: 1024px;
+  margin: 0 auto;
+}
+
+/* استایل داشبورد اصلی */
+.dashboardCard {
+  background-color: #1e1f29;
+  border: 1px solid #44475a;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  position: relative;
+}
+
+.title {
+  font-size: 1.875rem;
+  font-weight: 900;
+  margin-bottom: 0.75rem;
+  color: #ff79c6;
+}
+
+.subtitle {
+  color: #6272a4;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.statCard {
+  background-color: #282a36;
+  padding: 1.25rem;
+  border-radius: 0.75rem;
+  border: 1px solid #44475a;
+  transition: all 0.3s ease;
+}
+
+.statCard:hover {
+  border-color: #bd93f9;
+  transform: translateY(-2px);
+}
+
+.statLabel {
+  color: #6272a4;
+  font-size: 0.75rem;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.statValue {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #f8f8f2;
+}
+
+/* استایل عمومی صفحات مدیریت */
+.placeholderCard {
+  background-color: #1e1f29;
+  border: 1px solid #44475a;
+  padding: 2rem;
+  border-radius: 1rem;
+}
+
+.pageTitle {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #8be9fd;
+  margin-bottom: 0.5rem;
+}
+
+.dashedBox {
+  height: 8rem;
+  border: 2px dashed #44475a;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6272a4;
+  font-size: 0.875rem;
+  margin-top: 1rem;
+}

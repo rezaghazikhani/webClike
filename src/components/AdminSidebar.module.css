@@ -1,0 +1,125 @@
+.sidebar {
+  width: 16rem;
+  background-color: #1e1f29;
+  border-left: 1px solid #44475a;
+  color: #f8f8f2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  box-shadow: 10px 0 30px rgba(0, 0, 0, 0.15);
+}
+
+.topSection {
+  padding: 1.5rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-bottom: 1.5rem;
+  border-b: 1px solid #44475a;
+  margin-bottom: 1.5rem;
+}
+
+.pulseDot {
+  height: 0.75rem;
+  width: 0.75rem;
+  border-radius: 50%;
+  background-color: #50fa7b;
+  box-shadow: 0 0 10px #50fa7b;
+}
+
+.brandText {
+  font-weight: 900;
+  font-size: 1rem;
+  background: linear-gradient(to left, #ff79c6, #bd93f9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: #6272a4;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.navLink:hover {
+  background-color: #282a36;
+  color: #f8f8f2;
+  border-color: #44475a;
+}
+
+.activeLink {
+  background-color: #282a36;
+  color: #ff79c6 !important;
+  border-color: rgba(255, 121, 198, 0.3);
+  box-shadow: 0 4px 20px rgba(255, 121, 198, 0.1);
+  transform: translateX(-4px);
+}
+
+.bottomSection {
+  padding: 1rem;
+  border-top: 1px solid #44475a;
+  background-color: rgba(25, 26, 33, 0.5);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footerLink {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.625rem 1rem;
+  border-radius: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: #6272a4;
+  transition: all 0.3s ease;
+}
+
+.footerLink:hover {
+  background-color: #282a36;
+  color: #8be9fd;
+}
+
+.logoutButton {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.625rem 1rem;
+  border-radius: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: bold;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #ff5555;
+  text-align: right;
+  transition: all 0.3s ease;
+}
+
+.logoutButton:hover {
+  background-color: rgba(255, 85, 85, 0.1);
+  color: #ff6e6e;
+}
