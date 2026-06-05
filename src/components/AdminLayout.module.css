@@ -1,103 +1,137 @@
-.container {
-  min-height: 100vh;
-  background-color: #282a36;
-  color: #f8f8f2;
+/* src/components/AdminLayout.module.css */
+
+.adminContainer {
   display: flex;
-  font-family: system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+  background-color: var(--bg-main, #0a0a0a);
+  color: var(--text-main, #ffffff);
+  font-family: inherit;
 }
 
+/* استایل سایدبار که در تصویر مچاله شده بود */
+.sidebar {
+  width: 260px;
+  min-width: 260px;
+  background-color: var(--bg-card, #141414);
+  border-left: 1px solid var(--border-color, #262626);
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.sidebarHeader {
+  margin-bottom: 2.5rem;
+}
+
+.logo {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-main, #ffffff);
+  margin: 0;
+}
+
+/* چیدمان عمودی لینک‌ها */
+.navMenu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex-grow: 1;
+}
+
+.navLink {
+  display: block;
+  color: var(--text-muted, #8e8e93);
+  text-decoration: none;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.navLink:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+  color: var(--text-main, #ffffff);
+  padding-right: 1.25rem; /* افکت حرکت نرم به چپ در راست‌چین */
+}
+
+/* دکمه خروج */
+.logoutBtn {
+  background-color: transparent;
+  border: 1px solid #ff4b4b;
+  color: #ff4b4b;
+  padding: 0.75rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  width: 100%;
+  transition: all 0.2s;
+  margin-top: auto;
+}
+
+.logoutBtn:hover {
+  background-color: #ff4b4b;
+  color: #ffffff;
+}
+
+/* محتوای سمت چپ سایدبار (داشبورد و فرم‌ها) */
 .mainContent {
   flex-grow: 1;
-  padding: 2rem;
+  padding: 2.5rem;
+  box-sizing: border-box;
   overflow-y: auto;
   max-height: 100vh;
 }
 
-.wrapper {
-  max-w: 1024px;
-  margin: 0 auto;
-}
-
-/* استایل داشبورد اصلی */
+/* استایل‌های کارت داشبورد داخل تصویر */
 .dashboardCard {
-  background-color: #1e1f29;
-  border: 1px solid #44475a;
-  padding: 2rem;
-  border-radius: 1rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-  position: relative;
+  background-color: var(--bg-card, #141414);
+  border: 1px solid var(--border-color, #262626);
+  border-radius: 12px;
+  padding: 2.5rem;
 }
 
 .title {
-  font-size: 1.875rem;
-  font-weight: 900;
-  margin-bottom: 0.75rem;
-  color: #ff79c6;
-}
-
-.subtitle {
-  color: #6272a4;
-  font-size: 0.875rem;
-  line-height: 1.6;
-}
-
-.statsGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2.5rem;
-}
-
-.statCard {
-  background-color: #282a36;
-  padding: 1.25rem;
-  border-radius: 0.75rem;
-  border: 1px solid #44475a;
-  transition: all 0.3s ease;
-}
-
-.statCard:hover {
-  border-color: #bd93f9;
-  transform: translateY(-2px);
-}
-
-.statLabel {
-  color: #6272a4;
-  font-size: 0.75rem;
-  font-weight: bold;
-  display: block;
-  margin-bottom: 0.25rem;
-}
-
-.statValue {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #f8f8f2;
-}
-
-/* استایل عمومی صفحات مدیریت */
-.placeholderCard {
-  background-color: #1e1f29;
-  border: 1px solid #44475a;
-  padding: 2rem;
-  border-radius: 1rem;
-}
-
-.pageTitle {
-  font-size: 1.5rem;
-  font-weight: 900;
-  color: #8be9fd;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-top: 0;
   margin-bottom: 0.5rem;
 }
 
-.dashedBox {
-  height: 8rem;
-  border: 2px dashed #44475a;
-  border-radius: 0.75rem;
+.subtitle {
+  color: var(--text-muted, #8e8e93);
+  font-size: 0.9rem;
+  margin-bottom: 2.5rem;
+}
+
+/* گرید باکس‌های آمار */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.statCard {
+  background-color: var(--bg-input, #1c1c1e);
+  border: 1px solid var(--border-color, #262626);
+  border-radius: 8px;
+  padding: 1.5rem;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #6272a4;
-  font-size: 0.875rem;
-  margin-top: 1rem;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.statLabel {
+  color: var(--text-muted, #8e8e93);
+  font-size: 0.85rem;
+}
+
+.statValue {
+  color: var(--text-main, #ffffff);
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0;
 }

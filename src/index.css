@@ -1,31 +1,69 @@
+/* src/index.css */
+
+/* ۱. تعریف متغیرهای تم دارک مونوکروم و پرمیوم */
 :root {
-  --bg-main: #0a0a0c;       /* مشکی بسیار عمیق */
-  --bg-card: #121215;       /* خاکستری تیره برای کارت‌ها */
-  --bg-input: #18181c;      /* ورودی‌های فرم */
-  --border-color: #222226;  /* خطوط جداکننده مینیمال */
-  --text-main: #f4f4f6;     /* متن اصلی سفید مات */
-  --text-muted: #7e7e88;    /* متن‌های ثانویه و توضیحات */
-  --accent: #ffffff;        /* رنگ اکشن‌ها و دکمه‌های اصلی */
-  --accent-hover: #e4e4e7;
+  --bg-main: #0a0a0a;
+  --bg-card: #141414;
+  --bg-input: #1c1c1e;
+  --border-color: #262626;
+  --text-main: #ffffff;
+  --text-muted: #8e8e93;
 }
 
-body {
+/* ۲. ریست کردن استایل‌های پیش‌فرض مرورگر و اجبار به بک‌گراند مشکی */
+html, body {
   margin: 0;
-  background-color: var(--bg-main);
-  color: var(--text-main);
+  padding: 0;
+  background-color: var(--bg-main) !important;
+  color: var(--text-main) !important;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  min-height: 100vh;
+  scroll-behavior: smooth;
 }
 
-/* افکت اسکرول‌بار مخفی و ظریف */
-::-webkit-scrollbar {
-  width: 6px;
+/* ۳. استایل هدر و منوی بالای سایت برای هماهنگی با تم جدید */
+header, nav {
+  background-color: var(--bg-card) !important;
+  border-bottom: 1px solid var(--border-color) !important;
 }
-::-webkit-scrollbar-track {
-  background: var(--bg-main);
+
+nav a {
+  color: var(--text-muted) !important;
+  text-decoration: none;
+  transition: color 0.2s ease;
 }
-::-webkit-scrollbar-thumb {
-  background: #2c2c35;
-  border-radius: 10px;
+
+nav a:hover {
+  color: var(--text-main) !important;
+}
+
+/* ۴. انیمیشن لود نرم اول صفحه */
+.fade-in-up {
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ۵. افکت فوق‌العاده هاور روی تمام کارت‌ها */
+.hover-card {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+}
+
+.hover-card:hover {
+  transform: translateY(-5px) !important;
+  border-color: #44444a !important;
+  box-sizing: border-box;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6) !important;
+  background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%) !important;
 }

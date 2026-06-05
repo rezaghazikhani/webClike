@@ -1,23 +1,24 @@
+/* src/components/AdminForms.module.css */
+
 .formCard {
-  background-color: var(--bg-card);
-  border: 1px solid var(--border-color);
+  background-color: var(--bg-card, #141414);
+  border: 1px solid var(--border-color, #262626);
   border-radius: 12px;
-  padding: 2.5rem;
-  margin-bottom: 3rem;
+  padding: 2rem;
+  margin-bottom: 2.5rem;
 }
 
 .formTitle {
-  font-size: 1.1rem;
+  color: var(--text-main, #ffffff);
+  font-size: 1.25rem;
   font-weight: 700;
-  color: var(--text-main);
-  margin-bottom: 2rem;
-  border-bottom: 1px solid var(--border-color);
-  padding-bottom: 1rem;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.5rem;
   margin-bottom: 1.5rem;
 }
@@ -29,22 +30,21 @@
 }
 
 .label {
-  font-size: 0.75rem;
+  color: var(--text-muted, #8e8e93);
+  font-size: 0.85rem;
   font-weight: 600;
-  color: var(--text-main);
 }
 
 .input, .textarea {
-  width: 100%;
-  padding: 0.8rem 1rem;
-  background-color: var(--bg-input);
-  border: 1px solid var(--border-color);
-  border-radius: 6px;
-  color: var(--text-main);
-  font-size: 0.85rem;
+  background-color: var(--bg-input, #1c1c1e);
+  border: 1px solid var(--border-color, #262626);
+  color: var(--text-main, #ffffff);
+  padding: 0.75rem;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.9rem;
   outline: none;
   transition: border-color 0.2s;
-  box-sizing: border-box;
 }
 
 .input:focus, .textarea:focus {
@@ -53,56 +53,74 @@
 
 .textarea {
   min-height: 120px;
+  resize: vertical;
 }
 
 .submitBtn {
-  background-color: var(--accent) !important;
-  color: #000000 !important;
-  font-weight: 600;
-  padding: 0.75rem 2.5rem !important;
-  border-radius: 6px !important;
-  font-size: 0.85rem;
+  background-color: var(--text-main, #ffffff);
+  color: #000000;
   border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 8px;
+  font-weight: 700;
   cursor: pointer;
+  font-family: inherit;
+  font-size: 0.9rem;
+  transition: opacity 0.2s;
 }
 
+.submitBtn:hover {
+  opacity: 0.9;
+}
+
+/* استایل‌های مربوط به جداول مدیریت و لاگ‌ها */
 .tableWrapper {
-  background-color: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
-  overflow: hidden;
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--border-color, #262626);
+  border-radius: 8px;
+  background-color: var(--bg-card, #141414);
 }
 
 .table {
   width: 100%;
   border-collapse: collapse;
+  text-align: right;
+  font-size: 0.85rem;
 }
 
 .th {
-  background-color: rgba(255,255,255,0.01);
-  color: var(--text-main);
-  padding: 1.2rem 1rem;
-  font-size: 0.8rem;
-  font-weight: 700;
-  border-bottom: 1px solid var(--border-color);
+  background-color: var(--bg-input, #1c1c1e);
+  color: var(--text-muted, #8e8e93);
+  padding: 1rem;
+  font-weight: 600;
+  border-bottom: 1px solid var(--border-color, #262626);
 }
 
-.td {
-  padding: 1.2rem 1rem;
-  color: var(--text-muted);
-  border-bottom: 1px solid var(--border-color);
-  font-size: 0.8rem;
+.tr {
+  border-bottom: 1px solid var(--border-color, #262626);
+  transition: background-color 0.2s;
+}
+
+.tr:last-child {
+  border-bottom: none;
 }
 
 .tr:hover {
   background-color: rgba(255, 255, 255, 0.01);
 }
 
+.td {
+  padding: 1rem;
+  color: var(--text-muted, #8e8e93);
+  vertical-align: middle;
+}
+
 .badge {
-  background-color: rgba(255,255,255,0.06);
-  color: var(--text-main);
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color, #262626);
+  color: var(--text-main, #ffffff);
   padding: 0.2rem 0.6rem;
   border-radius: 4px;
-  font-size: 0.7rem;
-  border: 1px solid var(--border-color);
+  font-size: 0.75rem;
 }
