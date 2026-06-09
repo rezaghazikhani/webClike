@@ -1,15 +1,28 @@
+// src/components/ProtectedRoute.jsx
+import React from 'react';
 import { Navigate } from 'react-router-dom';
 
 export default function ProtectedRoute({ children, roleRequired }) {
-  const currentRole = localStorage.getItem('userRole');
+  const userRole = localStorage.getItem('userRole');
 
-  if (!currentRole) {
+  if (!userRole) {
     return <Navigate to="/login" replace />;
   }
 
-  if (roleRequired && currentRole !== roleRequired) {
-    // اگر ادمین خواست به روت یوزر برود یا برعکس، برگردد به روت مناسب خودش
-    return <Navigate to={currentRole === 'admin' ? '/admin' : '/user'} replace />;
+  // احراز هویت برای صفحات مشترک ادمین و نویسنده
+  if (roleRequired === 'admin_or_author') {
+    if (userRole === 'admin' || userRole === 'author') {
+      return children;
+    }
+    return <Navigate to="/user" replace />;
+  }
+
+  // احراز هویت برای روت‌های قفل و اختصاصی
+  if (userRole !== roleRequired) {
+    if (userRole === 'admin' || userRole === 'author') {
+      return <Navigate to="/admin" replace />;
+    }
+    return <Navigate to="/user" replace />;
   }
 
   return children;
